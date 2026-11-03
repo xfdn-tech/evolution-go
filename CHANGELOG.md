@@ -1,5 +1,17 @@
 # Evolution GO - Changelog
 
+## v0.7.3
+
+**Docker:** `evoapicloud/evolution-go:0.7.3`
+
+### 🐛 Bug Fixes
+- **Fix `Client outdated (405)` connection failures** (#225, #228) — the
+  WhatsApp version resolved at startup (env vars or `fetchWhatsAppWebVersion()`)
+  only fed `store.DeviceProps.Version`, while the Noise handshake kept using the
+  version compiled into whatsmeow. `StartClient` now also calls
+  `store.SetWAVersion` so the handshake uses the resolved version. Existing
+  sessions reconnect without a new QR code.
+
 ## v0.7.2
 
 **Docker:** `evoapicloud/evolution-go:0.7.2`
